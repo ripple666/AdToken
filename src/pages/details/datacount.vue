@@ -1,7 +1,8 @@
 <template>
 	<div class="datacount">
 		<div class="tit">
-			我的帐户
+			数据列表
+
 		</div>
 		<div class="mid">
 			<span class="tit">时间范围</span>
@@ -12,9 +13,9 @@
 				<option value="">所有</option>
 			</select>
 			<span>
-				<vue-datepicker-local  :local="DateCN"   v-model="queryDataTimeStart" />
+				<vue-datepicker-local  :local="dateData"   v-model="queryDataTimeStart" />
 				<span>至</span>
-				<vue-datepicker-local  :local="DateCN"   v-model="queryDataTimeEnd" />
+				<vue-datepicker-local  :local="dateData"   v-model="queryDataTimeEnd" />
 			</span>
 		</div>
 		<div class="data-container">
@@ -36,17 +37,13 @@
 <script>
 import myTable from '@/components/pices/my-table'
 import vueDatepickerLocal from 'vue-datepicker-local'
+import {mapState} from 'vuex'
 	export default{
 		components:{
 			vueDatepickerLocal,myTable
 		},
 		data(){
 			return{
-				DateCN:{  //日期文字
-					monthsHead: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
-					months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'), 
-					weeks: '一_二_三_四_五_六_日'.split('_')
-				},
 				queryDataTimeStart:new Date(),
 				queryDataTimeEnd:new Date(),
 				tableNavs:[
@@ -88,9 +85,11 @@ import vueDatepickerLocal from 'vue-datepicker-local'
 				},
 			}
 		},
-        computed:{
-
-        },
+        computed:mapState({
+        	dateData(state){
+        		return state.dateData
+        	}
+        }),
         watch:{
 
         },

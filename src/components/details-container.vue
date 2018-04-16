@@ -3,10 +3,10 @@
 		<div class="left">
 			<ul>
 				<li class="first-li" v-for="(firstList,firstIndex) in firstLists">
-					<span @click="changeFirstShow(firstIndex)" :style="nowFirstIndex===firstIndex?{color:'#000'}:''"><i class="first-icon" :style="nowFirstIndex===firstIndex?{backgroundColor:'#000'}:''"></i>{{firstList.pagename}}</span>
+					<span noselect @click="changeFirstShow(firstIndex)" :style="nowFirstIndex===firstIndex?{color:'#000'}:''"><i class="first-icon" :style="nowFirstIndex===firstIndex?{backgroundColor:'#000'}:''"></i>{{firstList.pagename}}</span>
 					<ul v-show="nowFirstIndex===firstIndex">
 						<li class="secont-li" :style="nowFirstIndex===firstIndex&&nowSconIndex===sconIndex?{backgroundColor:'#699BE4',color:'#fff'}:''"  @click="changeScondShow(firstIndex,sconIndex)" v-for="(sconList,sconIndex) in firstList.sconLists">
-							<span>{{sconList.pagename}}</span>
+							<span noselect>{{sconList.pagename}}</span>
 						</li>
 					</ul>
 				</li>
@@ -32,11 +32,11 @@ import { mapState } from 'vuex'
 					},
 					{
 						pagename:'广告管理',
-						path:'/advertise-strategy',
+						path:'/advertise-campaign',
 						sconLists:[
 							{
 								pagename:'广告策略列表',
-								path:'/advertise-strategy'
+								path:'/advertise-campaign'
 							},
 							{
 								pagename:'广告列表',

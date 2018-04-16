@@ -15,8 +15,6 @@
 					
 					<span class="recovery">下一步</span>
 				</div>
-				
-				
 			</div>
 		</div>
 	</div>

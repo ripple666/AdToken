@@ -28,6 +28,10 @@
 					</select>
 				</span>
 				<span class="keywords">
+					<select>
+						<option>广告</option>
+						<option>广告策略</option>
+					</select>
 					<input type="text" placeholder="输入关键字查询">
 					<i class="icon-bg"></i>
 				</span>
@@ -326,9 +330,14 @@ export default{
 				height: 18px;
 				display: inline-block;
 				position: relative;
+				border: 1px solid #D9D9D9;
+				height:40px;
+				line-height:40px;
+				padding:0 15px;
+				border-radius:10px;
 				input{
 					background: #FFFFFF;
-					border: 1px solid #D9D9D9;
+					border: none;
 					line-height: 26px;
 					width: 156px;
 					border-radius: 0;
@@ -339,9 +348,9 @@ export default{
 					width: 14px;
 					height: 14px;
 					position: absolute;
-					top: 0px;
+					top:50%;
 					right: 10px;
-					margin-top: 6px;
+					transform:translateY(-50%);
 					cursor: pointer;
 				}
 			}

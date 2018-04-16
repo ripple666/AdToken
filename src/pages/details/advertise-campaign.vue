@@ -1,5 +1,5 @@
 <template>
-	<div  class="strategy">
+	<div  class="campaign">
 		<div class="list" v-show="showList">
 			<div class="tit">
 				广告策略列表
@@ -87,9 +87,9 @@
 							<span @click="chooseThrowType(index)" :style="nowThrowTypeIndex===index?{backgroundColor:'#568CDC',color:'#fff'}:''" v-for="(item,index) in throwTypes" class="throw-type">{{item.name}}</span>
 						</div>
 						<div class="time">
-							<vue-datepicker-local  :local="DateCN"   v-model="adTimeStart" />
+							<vue-datepicker-local  :local="dateData"   v-model="adTimeStart" />
 							<span>至</span>
-							<vue-datepicker-local  :local="DateCN"   v-model="adTimeEnd" />
+							<vue-datepicker-local  :local="dateData"   v-model="adTimeEnd" />
 						</div>
 					</div>
 					<div class="session session_2">
@@ -130,15 +130,11 @@
 <script>
 import myTable from '@/components/pices/my-table'
 import vueDatepickerLocal from 'vue-datepicker-local'
+import {mapState} from 'vuex'
 export default{
 		components:{myTable,vueDatepickerLocal},
 		data(){
 			return{
-				DateCN:{  //日期文字
-					monthsHead: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
-					months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'), 
-					weeks: '一_二_三_四_五_六_日'.split('_')
-				},
 				showSearchList:true,
 				showList:true,
 				adTimeStart:new Date(),//会议开始时间
@@ -306,9 +302,11 @@ export default{
 				},
 			}
 		},
-        computed:{
-
-        },
+        computed:mapState({
+        	dateData(state){
+        		return state.dateData
+        	}
+        }),
         watch:{
 
         },
@@ -362,7 +360,7 @@ export default{
 }
 </script>
 <style lang="scss">
-.strategy{
+.campaign{
 	font-size: 14px;
 	padding:0 30px 60px 30px;
 	background: #FFFFFF;

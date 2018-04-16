@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import body from '@/components/body'
+import bodyContainer from '@/components/body-container'
 import main from '@/pages/main'
 import login from '@/pages/user/login'
 import register from '@/pages/user/register'
@@ -9,7 +9,7 @@ import passwordRecovery from '@/pages/user/password-recovery'
 
 import detailsContainer from '@/components/details-container'
 import index from '@/pages/details/index'
-import advertiseStrategy from '@/pages/details/advertise-strategy'
+import advertiseCampaign from '@/pages/details/advertise-campaign'
 import advertiseBanner from '@/pages/details/advertise-banner'
 import pay from '@/pages/details/pay'
 import datacount from '@/pages/details/datacount'
@@ -33,7 +33,7 @@ export default new Router({
   routes: [
   	{
   		path:'/',
-  		component:body,
+  		component:bodyContainer,
   		redirect: '/main',
   		children:[
 			  {
@@ -62,8 +62,8 @@ export default new Router({
               component: index,
             },
             {
-              path: 'advertise-strategy',
-              component: advertiseStrategy,
+              path: 'advertise-campaign',
+              component: advertiseCampaign,
             },
             {
               path: 'advertise-banner',

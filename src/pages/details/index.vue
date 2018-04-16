@@ -236,7 +236,6 @@ export default{
         },
         methods:{
         	initChart() {
-		      console.log(this.$el);
 		      var chartContainer = document.getElementById('chart-container')
 		      this.chart = new Highcharts.Chart(chartContainer, this.options);
 		    },

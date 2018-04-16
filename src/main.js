@@ -6,7 +6,10 @@ import router from './router'
 import axios from 'axios'
 import store from './store'
 
-import 'animate.css'
+import 'animate.css'  //全局引用css
+Vue.use(axios)
+
+
 
 Vue.config.productionTip = false //关闭生产模式下给出的提示
 

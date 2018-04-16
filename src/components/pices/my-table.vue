@@ -1,5 +1,5 @@
 <template>
-	<div class="table">
+	<div class="my-table">
 		<table>
 			<thead>
 				<tr>
@@ -60,7 +60,7 @@
 	}
 </script>
 <style lang="scss">
-.table{
+.my-table{
 	table{
 		width: 100%;
 		thead{
