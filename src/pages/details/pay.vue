@@ -135,6 +135,7 @@ import myTable from '@/components/pices/my-table'
 		border: 1px solid #EEEEEE;
 		padding: 0 30px;
 		padding-bottom: 30px;
+		background-color: #fff;
 	}
 	.session_1{
 		margin-bottom: 10px;
