@@ -48,8 +48,8 @@
 			<div class="tit">
 				Add new banner
 			</div>
-			<div class="campaign">
-				<label for="">广告策略：</label>
+			<div class="">
+				<label for="">广告策略</label>
 				<select name="" id="">
 					<option value="">
 						选择广告策略
@@ -57,15 +57,15 @@
 				</select>
 			</div>
 			<div class="name">
-				<label for="">广告名称：</label>
+				<label for="">广告名称</label>
 				<input type="text">
 			</div>
 			<div class="website">
-				<label for="">目标网址：</label>
+				<label for="">目标网址</label>
 				<input type="text" placeholder="http://">
 			</div>
 			<div class="format">
-				<label for="">广告格式：</label>
+				<label for="">广告格式</label>
 				<span class="file-container">
 					<input type="file">
 					<span class="file-btn">选择图片</span>
@@ -74,17 +74,17 @@
 			</div>
 			<div class="instead-text">
 				<label for="">
-					图片无法显示时的替换文字：
+					图片无法显示时的替换文字
 					
 				</label>
 				<input type="text">
 			</div>
 			<div class="info">
-				<label for="">状态栏信息：</label>
+				<label for="">状态栏信息</label>
 				<input type="text">
 			</div>
 			<div class="btm-tex">
-				<label for="">图片下方显示文字：</label>
+				<label for="">图片下方显示文字</label>
 				<input type="text">
 			</div>
 			<div class="opeate">
@@ -398,9 +398,6 @@ export default{
 				text-align: right;
 				margin-right: 10px;
 			}
-		}
-		.campaign{
-
 		}
 		.name{
 			input{
