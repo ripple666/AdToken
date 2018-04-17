@@ -1,5 +1,5 @@
 <template>
-	<div class="my-select">
+	<div class="my-select" id="my-select">
 		<div class="current-option option" :style="{height:selectData.optionHeight,lineHeight:selectData.optionHeight}" @click='showOptions'>{{ currentOption || this.selectData.options[0].name }}</div>
 		<transition 
 			:duration="50"
@@ -37,14 +37,18 @@
         	showOptions(){
         		this.isShowOptions = !this.isShowOptions
         	},
-        	optionClick(index){  //
+        	optionClick(index){  
         		this.isShowOptions = false
         		this.currentOption = this.selectData.options[index].name
         		this.$emit('on-option-click',index)
         	}
         },
-		created(){
-
+		mounted(){
+			document.addEventListener('click', (e) => {  //点击其他区域隐藏组件
+			    if (!this.$el.contains(e.target)) {
+			       	this.isShowOptions = false
+			    }
+			})
 		}
 	}
 </script>
