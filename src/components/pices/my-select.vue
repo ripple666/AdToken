@@ -1,12 +1,12 @@
 <template>
-	<div class="my-select" id="my-select">
-		<div class="current-option option" :style="{height:selectData.optionHeight,lineHeight:selectData.optionHeight}" @click='showOptions'>{{ currentOption || this.selectData.options[0].name }}</div>
+	<div class="my-select" >
+		<div class="current-option option" :style="{height:selectData.optionHeight,lineHeight:selectData.optionHeight,width:optionWidth}" @click='showOptions'>{{ currentOption || this.selectData.options[0].name }}</div>
 		<transition 
-			:duration="50"
-			enter-active-class="animated fadeInDown"
+			:duration="100"
+			enter-active-class="animated fadeIn"
     		leave-active-class="animated fadeOut"
     	>
-			<ul class="option-ul" v-show="isShowOptions">
+			<ul ref="ul" class="option-ul" :style="{left:left}"  v-show="isShowOptions">
 				<li class="option" :style="{height:selectData.optionHeight,lineHeight:selectData.optionHeight}" @click="optionClick(index)" v-for="(item,index) in selectData.options">
 					{{item.name}}
 				</li>
@@ -19,19 +19,22 @@
 		props:{
 		  selectData:{
 		  	 type:Object,
-		  	 default:{}
+		  	 default:{
+		  	 }
 		  }
 		},
 		data(){
 			return{
-				isShowOptions:false,
-				currentOption:''
+				isShowOptions:true,
+				left:'9999px' , //让option显示，才能获取到ul的宽度，
+				currentOption:'',
+				optionWidth:''
+
 			}
 		},
         computed:{
         },
         watch:{
-
         },
         methods:{
         	showOptions(){
@@ -44,6 +47,12 @@
         	}
         },
 		mounted(){
+			this.optionWidth = window.getComputedStyle(this.$refs.ul).width  //获取options列表的真实宽度，使得currentOption的宽度与之保持一致
+			this.isShowOptions = false  //然后让option隐藏
+			setTimeout(()=>{  //将left的位置放到正常位置
+				this.left = 0
+			},500)
+			
 			document.addEventListener('click', (e) => {  //点击其他区域隐藏组件
 			    if (!this.$el.contains(e.target)) {
 			       	this.isShowOptions = false
@@ -56,6 +65,7 @@
 	.my-select{
 		display: inline-block;
 		position: relative;
+		/*overflow: hidden;*/
 		.option{
 			padding: 0 25px 0 12px;
 			white-space: nowrap;
