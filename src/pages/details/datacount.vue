@@ -6,12 +6,7 @@
 		</div>
 		<div class="mid">
 			<span class="tit">时间范围</span>
-			<select name="" id="">
-				<option value="">今天</option>
-				<option value="">昨天</option>
-				<option value="">过去7天</option>
-				<option value="">所有</option>
-			</select>
+			<my-select class="select" :selectData="dayRange"></my-select>
 			<span>
 				<vue-datepicker-local  :local="dateData"   v-model="queryDataTimeStart" />
 				<span>至</span>
@@ -32,7 +27,10 @@
 				<my-table  @on-td-click="tdClick" :tableData="tableData"></my-table>
 			</div>
 		</div>
-		<my-select :selectData="selectData"></my-select>
+		<span>123</span>
+	
+		
+	
 	</div>
 </template>
 <script>
@@ -46,7 +44,8 @@ import mySelect from '@/components/pices/my-select'
 		},
 		data(){
 			return{
-				selectData:{
+				dayRange:{
+					optionHeight:'30px',
 					options:[
 						{
 							name:'今天'
@@ -236,7 +235,7 @@ import mySelect from '@/components/pices/my-select'
 			.tit{
 				font-size: 14px;
 			}
-			select{
+			.select{
 				margin:0 20px 0 10px;
 			}
 		}

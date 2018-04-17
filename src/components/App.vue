@@ -265,36 +265,5 @@ img,i{
       overflow: auto;
   }
 
-
-select::-ms-expand{ display: none; }
-select {
-  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
-  border: solid 1px #D9D9D9;
-
-  /*很关键：将默认的select选择框样式清除*/
-  appearance:none;
-  -moz-appearance:none;
-  -webkit-appearance:none;
-
-  /*在选择框的最右侧中间显示小箭头图片*/
-  background:#fff url("http://ourjs.github.io/static/2015/arrow.png") right center/14px 14px no-repeat border-box;
-
-  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
-  padding-right: 18px;
-  padding-left: 10px;
-  outline: none;
-}
-option::-ms-expand{ display: none; }
-option{
-    -moz-appearance:none; /* Firefox */
-    -webkit-appearance:none; /* Safari 和 Chrome */
-    appearance:none;
-}
-/* --背景色字体颜色--*/
-option:hover{
-    color:#fff;
-    background-color:#1E90FF;
-}
-
 </style>
 

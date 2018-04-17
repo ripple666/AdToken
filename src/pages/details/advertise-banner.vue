@@ -11,36 +11,25 @@
 			<div class="condition"  v-show="showSearchList">
 				<span class="dist">
 					<span>投放目的：</span>
-					<select name="" id="">
-						<option v-for="(item,index) in dists" :value="item.id">{{item.name}}</option>
-					</select>
+					<my-select class="select" :selectData="dists"></my-select>
 				</span>
 				<span class="status">
 					<span>状态：</span>
-					<select name="" id="">
-						<option v-for="(item,index) in status" :value="item.id">{{item.name}}</option>
-					</select>
+					<my-select class="select" :selectData="status"></my-select>
 				</span>
 				<span class="type">
 					<span>付费方式：</span>
-					<select name="" id="">
-						<option v-for="(item,index) in types" :value="item.id">{{item.name}}</option>
-					</select>
+					<my-select class="select" :selectData="types"></my-select>
 				</span>
 				<span class="keywords">
-					<select>
-						<option>广告</option>
-						<option>广告策略</option>
-					</select>
+					<my-select class="select" :selectData="keywordTypes"></my-select>
 					<input type="text" placeholder="输入关键字查询">
 					<i class="icon-bg"></i>
 				</span>
 				<span  class="clear">清除</span>
 			</div>
 			<div class="modify">
-				<select name="" id="">
-					<option v-for="(item,index) in modifies" :value="item.id">{{item.name}}</option>
-				</select>
+				<my-select class="select" :selectData="modifies"></my-select>
 			</div>
 			<my-table @on-td-click="tdClick" :tableData="tableData"></my-table>
 		</div>
@@ -50,11 +39,7 @@
 			</div>
 			<div class="">
 				<label for="">广告策略</label>
-				<select name="" id="">
-					<option value="">
-						选择广告策略
-					</option>
-				</select>
+				<my-select class="select" :selectData="campaigns"></my-select>
 			</div>
 			<div class="name">
 				<label for="">广告名称</label>
@@ -97,84 +82,107 @@
 </template>
 <script>
 import myTable from '@/components/pices/my-table'
+import mySelect from '@/components/pices/my-select'
 export default{
-		components:{myTable},
+		components:{myTable,mySelect},
 		data(){
 			return{
 				showSearchList:true,
 				showList:true,
-				dists:[
-					{
-						name:'不限',
-						id:0
-					},
-					{
-						name:'落地页',
-						id:0
-					},
-					{
-						name:'应用加载',
-						id:0
-					}
-				],
-				status:[
-					{
-						name:'不限',
-						id:0
-					},
-					{
-						name:'投放中',
-						id:0
-					},
-					{
-						name:'审核不通过',
-						id:0
-					},
-					{
-						name:'新建审核中',
-						id:0
-					},
-					{
-						name:'修改审核中',
-						id:0
-					},
-					{
-						name:'已暂停',
-						id:0
-					},
-					{
-						name:'广告策略超出预算',
-						id:0
-					}
-				],
-				types:[
-					{
-						name:'CPM',
-						id:0
-					},
-					{
-						name:'CPC',
-						id:0
-					}
-				],
-				modifies:[
-					{
-						name:'批量修改',
-						id:0
-					},
-					{
-						name:'启用',
-						id:0
-					},
-					{
-						name:'暂停',
-						id:0
-					},
-					{
-						name:'删除',
-						id:0
-					}
-				],
+				dists:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'不限'
+						},
+						{
+							name:'落地页'
+						},
+						{
+							name:'应用加载'
+						}
+					]
+				},
+				status:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'不限',
+							id:0
+						},
+						{
+							name:'投放中',
+							id:0
+						},
+						{
+							name:'审核不通过',
+							id:0
+						},
+						{
+							name:'新建审核中',
+							id:0
+						},
+						{
+							name:'修改审核中',
+							id:0
+						},
+						{
+							name:'已暂停',
+							id:0
+						},
+						{
+							name:'广告策略超出预算',
+							id:0
+						}
+					]
+				},
+				types:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'CPM',
+							id:0
+						},
+						{
+							name:'CPC',
+							id:0
+						}
+					]
+				},
+				keywordTypes:{
+					optionHeight:'26px',
+					options:[
+						{
+							name:'广告',
+							id:0
+						},
+						{
+							name:'选择广告策略',
+							id:0
+						}
+					]
+				},
+				modifies:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'批量修改',
+							id:0
+						},
+						{
+							name:'启用',
+							id:0
+						},
+						{
+							name:'暂停',
+							id:0
+						},
+						{
+							name:'删除',
+							id:0
+						}
+					]
+				},
 				tableData:{
 					ispage:true,
 					thead:[
@@ -222,6 +230,15 @@ export default{
 						}
 					]
 				},
+				campaigns:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'选择广告策略',
+							id:0
+						}
+					]
+				}
 			}
 		},
         computed:{
@@ -375,7 +392,7 @@ export default{
 		}
 	}
 	.add{
-		div{
+		&>div{
 			margin-bottom: 20px;
 		}
 		input[type='text']{

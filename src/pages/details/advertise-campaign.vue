@@ -11,21 +11,15 @@
 			<div class="condition" v-show="showSearchList">
 				<span class="dist">
 					<span>投放目的：</span>
-					<select name="" id="">
-						<option v-for="(item,index) in dists" :value="item.id">{{item.name}}</option>
-					</select>
+					<my-select class="select" :selectData="dists"></my-select>
 				</span>
 				<span class="status">
 					<span>状态：</span>
-					<select name="" id="">
-						<option v-for="(item,index) in status" :value="item.id">{{item.name}}</option>
-					</select>
+					<my-select class="select" :selectData="status"></my-select>
 				</span>
 				<span class="type">
 					<span>付费方式：</span>
-					<select name="" id="">
-						<option v-for="(item,index) in types" :value="item.id">{{item.name}}</option>
-					</select>
+					<my-select class="select" :selectData="types"></my-select>
 				</span>
 				<span class="keywords">
 					<input type="text" placeholder="输入关键字查询">
@@ -34,9 +28,7 @@
 				<span  class="clear">清除</span>
 			</div>
 			<div class="modify">
-				<select name="" id="">
-					<option v-for="(item,index) in modifies" :value="item.id">{{item.name}}</option>
-				</select>
+				<my-select class="select" :selectData="modifies"></my-select>
 			</div>
 			<my-table @on-td-click="tdClick" :tableData="tableData"></my-table>
 		</div>
@@ -49,10 +41,7 @@
 				<div class="cont">
 					<div class="session session_1">
 						<span class="label">推广目标</span>
-						<select  name="" id="">
-							<option value="">落地页</option>
-							<option value="">应用下载</option>
-						</select>
+						<my-select class="select" :selectData="targets"></my-select>
 					</div>
 					
 					<div  class="session session_2">
@@ -66,10 +55,7 @@
 				<div class="tit">设置广告预算</div>
 				<div class="cont">
 					<div class="session session_1">
-						<select name="" id="">
-							<option value="">单日预算</option>
-							<option value="">总预算</option>
-						</select>
+						<my-select class="select" :selectData="budgets"></my-select>
 						<input type="text" placeholder="USD">
 					</div>
 					<div  class="session session_2" >
@@ -101,14 +87,7 @@
 					<div class="session session_3">
 						<span  class="label">单价</span>
 						<input type="text">
-						<select name="" id="">
-							<option value="">货币</option>
-							<option value="">USD</option>
-							<option value="">CNY</option>
-							<option value="">EUR</option>
-							<option value="">BTC</option>
-							<option value="">ETH</option>
-						</select>
+						<my-select class="select" :selectData="currencyTypes"></my-select>
 					</div>
 					<div class="session session_3">
 						<span  class="label">素材展示</span>
@@ -131,8 +110,9 @@
 import myTable from '@/components/pices/my-table'
 import vueDatepickerLocal from 'vue-datepicker-local'
 import {mapState} from 'vuex'
+import mySelect from '@/components/pices/my-select'
 export default{
-		components:{myTable,vueDatepickerLocal},
+		components:{myTable,vueDatepickerLocal,mySelect},
 		data(){
 			return{
 				showSearchList:true,
@@ -150,78 +130,90 @@ export default{
 				],
 				nowThrowTypeIndex:0,
 				nowChargeTypeIndex:0,
-				dists:[
-					{
-						name:'不限',
-						id:0
-					},
-					{
-						name:'落地页',
-						id:0
-					},
-					{
-						name:'应用加载',
-						id:0
-					}
-				],
-				status:[
-					{
-						name:'不限',
-						id:0
-					},
-					{
-						name:'投放中',
-						id:0
-					},
-					{
-						name:'审核不通过',
-						id:0
-					},
-					{
-						name:'新建审核中',
-						id:0
-					},
-					{
-						name:'修改审核中',
-						id:0
-					},
-					{
-						name:'已暂停',
-						id:0
-					},
-					{
-						name:'广告策略超出预算',
-						id:0
-					}
-				],
-				types:[
-					{
-						name:'CPM',
-						id:0
-					},
-					{
-						name:'CPC',
-						id:0
-					}
-				],
-				modifies:[
-					{
-						name:'批量修改',
-						id:0
-					},
-					{
-						name:'启用',
-						id:0
-					},
-					{
-						name:'暂停',
-						id:0
-					},
-					{
-						name:'删除',
-						id:0
-					}
-				],
+				dists:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'不限',
+							id:0
+						},
+						{
+							name:'落地页',
+							id:0
+						},
+						{
+							name:'应用加载',
+							id:0
+						}
+					]
+				},
+				status:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'不限',
+							id:0
+						},
+						{
+							name:'投放中',
+							id:0
+						},
+						{
+							name:'审核不通过',
+							id:0
+						},
+						{
+							name:'新建审核中',
+							id:0
+						},
+						{
+							name:'修改审核中',
+							id:0
+						},
+						{
+							name:'已暂停',
+							id:0
+						},
+						{
+							name:'广告策略超出预算',
+							id:0
+						}
+					]
+				},
+				types:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'CPM',
+							id:0
+						},
+						{
+							name:'CPC',
+							id:0
+						}
+					]
+				},
+				modifies:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'批量修改',
+							id:0
+						},
+						{
+							name:'启用',
+							id:0
+						},
+						{
+							name:'暂停',
+							id:0
+						},
+						{
+							name:'删除',
+							id:0
+						}
+					]
+				},
 				tableData:{
 					ispage:true,
 					thead:[
@@ -300,6 +292,61 @@ export default{
 						}
 					]
 				},
+				targets:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'落地页',
+							id:0
+						},
+						{
+							name:'应用下载',
+							id:0
+						}
+					]
+				},
+				budgets:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'单日预算',
+							id:0
+						},
+						{
+							name:'总预算',
+							id:0
+						}
+					]
+				},
+				currencyTypes:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'货币',
+							id:0
+						},
+						{
+							name:'USD',
+							id:0
+						},
+						{
+							name:'CNY',
+							id:0
+						},
+						{
+							name:'EUR',
+							id:0
+						},
+						{
+							name:'BTC',
+							id:0
+						},
+						{
+							name:'ETH',
+							id:0
+						}
+					]
+				}
 			}
 		},
         computed:mapState({

@@ -25,13 +25,7 @@
 		<div class="mid">
 			<div class="tit">
 				<span>帐户消耗</span>
-
-				<select class="select" name="" id="">
-					<option value="1">过去7天</option>
-					<option value="2">今天</option>
-					<option value="3">昨天</option>
-					<option value="4">过去30天</option>
-				</select>
+				<my-select class="select" :selectData="dayRange"></my-select>
 			</div>
 			<my-table :tableData="tableData"></my-table>
 			<div class="chart">
@@ -47,7 +41,7 @@
 </template>
 <script>
 import myTable from '@/components/pices/my-table'
-
+import mySelect from '@/components/pices/my-select'
 
 import Highcharts from 'highcharts/highstock';
 import HighchartsMore from 'highcharts/highcharts-more';
@@ -59,10 +53,27 @@ Highcharts3D(Highcharts);
 
 export default{
 		components:{
-			myTable
+			myTable,mySelect
 		},
 		data(){
 			return{
+				dayRange:{
+					optionHeight:'30px',
+					options:[
+						{
+							name:'今天'
+						},
+						{
+							name:'昨天'
+						},
+						{
+							name:'过去7天'
+						},
+						{
+							name:'所有'
+						}
+					]
+				},
 				tableData:{
 					thead:[{name:'总花费(元)'},{name:'展位数'},{name:'点击数'},{name:'点击率'},{name:'平均点击单价(元)'},{name:'平均千次展现费用(元)'}],
 					tbody:[
