@@ -7,7 +7,7 @@ import axios from 'axios'
 import store from './store'
 
 import 'animate.css'  //全局引用css
-Vue.use(axios)
+Vue.prototype.$http = axios  //全局使用axios
 
 
 

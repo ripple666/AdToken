@@ -32,18 +32,36 @@
 				<my-table  @on-td-click="tdClick" :tableData="tableData"></my-table>
 			</div>
 		</div>
+		<my-select :selectData="selectData"></my-select>
 	</div>
 </template>
 <script>
 import myTable from '@/components/pices/my-table'
 import vueDatepickerLocal from 'vue-datepicker-local'
 import {mapState} from 'vuex'
+import mySelect from '@/components/pices/my-select'
 	export default{
 		components:{
-			vueDatepickerLocal,myTable
+			vueDatepickerLocal,myTable,mySelect
 		},
 		data(){
 			return{
+				selectData:{
+					options:[
+						{
+							name:'今天'
+						},
+						{
+							name:'昨天'
+						},
+						{
+							name:'过去7天'
+						},
+						{
+							name:'所有'
+						}
+					]
+				},
 				queryDataTimeStart:new Date(),
 				queryDataTimeEnd:new Date(),
 				tableNavs:[

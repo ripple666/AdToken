@@ -80,27 +80,30 @@ import { mapState } from 'vuex'
         },
         methods:{
         	changeFirstShow(firstIndex){
-        		// this.firstLists.map((v,i)=>{
-        		// 	v.isShow = false
-        		// })
-        		// this.firstLists[firstIndex].isShow = !this.firstLists[firstIndex].isShow
-        		
         		this.$router.push({path:this.firstLists[firstIndex].path});
         		this.nowFirstIndex = firstIndex
         		this.nowSconIndex = 0
+        		this.storageIndex(firstIndex,0)
         	},
         	changeScondShow(firstIndex,sconIndex){
-        		console.log(this.nowFirstIndex,this.nowFirstIndex ,firstIndex,sconIndex);
         		this.nowFirstIndex = firstIndex
         		this.nowSconIndex = sconIndex
         		this.$router.push({path:this.firstLists[firstIndex].sconLists[sconIndex].path});
+        		this.storageIndex(firstIndex,sconIndex)
+        	},
+        	storageIndex(firstIndex,sconIndex){ //储存当前页面的位置
+        		sessionStorage.setItem('nowFirstIndex',firstIndex)
+        		sessionStorage.setItem('nowSconIndex',sconIndex)
         	}
         },
 		created(){
-			console.log('detail');
 		    if(!this.islogin){  //检测是否是登陆状态，如果没有登陆就跳到首页
 		       this.$router.push({path:'/main'});
 		    }
+
+		    //刷新页面监听页面路由位置
+		    this.nowFirstIndex = parseInt(sessionStorage.getItem('nowFirstIndex')) || this.nowFirstIndex
+        	this.nowSconIndex = parseInt(sessionStorage.getItem('nowSconIndex')) || this.nowSconIndex
 		}
 	}
 </script>
