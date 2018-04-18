@@ -52,10 +52,7 @@
         	}
         },
 		mounted(){
-			console.log(window.getComputedStyle(this.$refs.ul).width)
 			this.currentOptionWidth = window.getComputedStyle(this.$refs.ul).width  //获取options列表的真实宽度，使得currentOption的宽度与之保持一致
-		
-			
 			document.addEventListener('click', (e) => {  //点击其他区域隐藏组件
 			    if (!this.$el.contains(e.target)) {
 			       	this.isShowOptions = false

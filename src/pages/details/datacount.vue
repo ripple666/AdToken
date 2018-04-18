@@ -9,7 +9,7 @@
 			<my-select class="select" :selectData="dayRange"></my-select>
 			<span>
 				<vue-datepicker-local  :local="dateData"   v-model="queryDataTimeStart" />
-				<span>至</span>
+				<span class="zhi">至</span>
 				<vue-datepicker-local  :local="dateData"   v-model="queryDataTimeEnd" />
 			</span>
 		</div>
@@ -100,6 +100,7 @@ import mySelect from '@/components/pices/my-select'
 		},
         computed:mapState({
         	dateData(state){
+        		console.log(state.dateData)
         		return state.dateData
         	}
         }),
@@ -228,6 +229,9 @@ import mySelect from '@/components/pices/my-select'
 		}
 		.mid{
 			margin-top: 20px;
+			.zhi{
+				margin: 0 8px;
+			}
 			.tit{
 				font-size: 14px;
 			}

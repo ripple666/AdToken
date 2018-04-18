@@ -18,7 +18,6 @@
 	</div>
 </template>
 <script>
-import { mapState } from 'vuex'
 	export default{
 		data(){
 			return{
@@ -62,18 +61,9 @@ import { mapState } from 'vuex'
 				]
 			}
 		},
-        computed:mapState({
-		    // 箭头函数可使代码更简练
-		    // islogin: state => state.islogin,
+        computed:{
 
-		    // 传字符串参数 'islogin' 等同于 `state => state.islogin`
-		    // islogin: 'islogin',
-
-		    // 为了能够使用 `this` 获取局部状态，必须使用常规函数
-		    islogin (state) {
-		      return state.islogin 
-		    }
-		}),
+        },
         watch:{
 
         },
@@ -96,13 +86,33 @@ import { mapState } from 'vuex'
         	}
         },
 		created(){
-		    if(!this.islogin){  //检测是否是登陆状态，如果没有登陆就跳到首页
-		       this.$router.push({path:'/main'});
+		    const path = this.$route.path
+		    switch(path){
+		    	case '/index':
+		    		this.nowFirstIndex = 0
+		    		this.nowSconIndex = 0
+		    		break;
+		    	case '/advertise-campaign':
+		    		this.nowFirstIndex = 1
+		    		this.nowSconIndex = 0
+		    		break;
+		    	case '/advertise-banner':
+		    		this.nowFirstIndex = 1
+		    		this.nowSconIndex = 1
+		    		break;
+		    	case '/datacount':
+		    		this.nowFirstIndex = 2
+		    		this.nowSconIndex = 0
+		    		break;
+		    	case '/pay':
+		    		this.nowFirstIndex = 3
+		    		this.nowSconIndex = 0
+		    		break;
+		    	case '/account':
+		    		this.nowFirstIndex = 4
+		    		this.nowSconIndex = 0
+		    		break;
 		    }
-
-		    //刷新页面监听页面路由位置
-		    this.nowFirstIndex = parseInt(sessionStorage.getItem('nowFirstIndex')) || this.nowFirstIndex
-        	this.nowSconIndex = parseInt(sessionStorage.getItem('nowSconIndex')) || this.nowSconIndex
 		}
 	}
 </script>

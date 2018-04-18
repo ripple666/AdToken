@@ -92,8 +92,11 @@
 					<div class="session session_3">
 						<span  class="label">素材展示</span>
 						<input type="text">
-						<img src="" alt="">
-						<span>无限制</span>
+						<span class="limit" @click="changelimit">
+							<img class="limit-img" :src="islimit?require('../../assets/images/campaign-choose.png'):require('../../assets/images/campaign-cancel.png')" alt="">
+							无限制
+						</span>
+						
 					</div>
 				</div>
 				
@@ -346,7 +349,8 @@ export default{
 							id:0
 						}
 					]
-				}
+				},
+				islimit:false
 			}
 		},
         computed:mapState({
@@ -393,6 +397,9 @@ export default{
         	},
         	chooseChargeType(index){
         		this.nowChargeTypeIndex = index
+        	},
+        	changelimit(){
+        		this.islimit = !this.islimit 
         	},
         	cancelAddCompagin(){
         		console.log('cancel');
@@ -530,6 +537,16 @@ export default{
 					width: 90px;
 					display: inline-block;
 					text-align: right;
+				}
+				.limit{
+					margin-left: 16px;
+					cursor: pointer;
+					display: inline-block;
+					height: 32px;
+					line-height: 32px;
+					img{
+						margin-right: 4px;
+					}
 				}
 			}
 			

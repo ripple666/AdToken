@@ -29,7 +29,6 @@
 	</div>
 </template>
 <script>
-import { mapMutations } from 'vuex'
 	export default{
 		data(){
 			return{
@@ -44,13 +43,9 @@ import { mapMutations } from 'vuex'
         },
 		methods:{
 			login(){
-				this.$store.commit({
-					type:'login',
-					loginStaus:true
-				})
 				localStorage.setItem('login',true)
-				this.$router.push({path:'/index'});
-			},
+				this.$router.push({path:'/'});
+			}
 			// ...mapMutations([
 		 //      'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`
 		 //      // `mapMutations` 也支持载荷：

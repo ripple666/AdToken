@@ -15,11 +15,9 @@ export default {
    
   },
   created(){
-      if(localStorage.getItem('login')){  //检测是否localStorage,如果有就不用登陆，有过登陆
-          this.$store.commit({
-            type:'login',
-            loginStaus:true
-          })
+      let islogin = localStorage.getItem('login')
+      if(!islogin){  //只用未登录操作
+         this.$router.push({path:'/main'})
       }
   }
 }

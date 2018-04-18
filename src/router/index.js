@@ -34,7 +34,7 @@ export default new Router({
   	{
   		path:'/',
   		component:bodyContainer,
-  		redirect: '/main',
+  		redirect: '/',
   		children:[
 			  {
 		      path: '/main',
