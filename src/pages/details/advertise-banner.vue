@@ -5,7 +5,7 @@
 				广告列表
 			</div>
 			<div class="operate">
-				<span class="add" @click="addNewCampaign">Add new banner</span>
+				<span class="add" @click="addNewBanner">Add new banner</span>
 				<span class="search" @click="search">查询删选</span>
 			</div>
 			<div class="condition"  v-show="showSearchList">
@@ -33,51 +33,54 @@
 			</div>
 			<my-table @on-td-click="tdClick" :tableData="tableData"></my-table>
 		</div>
-		<div class="add" v-show="!showList">
+		<div class="add" v-if="!showList">
 			<div class="tit">
 				Add new banner
 			</div>
-			<div class="">
-				<label for="">广告策略</label>
-				<my-select class="select" :selectData="campaigns"></my-select>
+			<div class="banner-item" v-for="(item,index) in  bannerLists">
+				<div class="">
+					<label for="">广告策略</label>
+					<my-select class="select" :selectData="campaigns"></my-select>
+				</div>
+				<div class="name">
+					<label for="">广告名称</label>
+					<input type="text">
+				</div>
+				<div class="website">
+					<label for="">目标网址</label>
+					<input type="text" placeholder="http://">
+				</div>
+				<div class="format">
+					<label for="">广告格式</label>
+					<span class="file-container">
+						<input type="file">
+						<span class="file-btn">选择图片</span>
+					</span>
+					<span  class="file-type">支持的尺寸和格式</span>
+				</div>
+				<div class="instead-text">
+					<label for="">
+						图片无法显示时的替换文字
+					</label>
+					<input type="text">
+				</div>
+				<div class="info">
+					<label for="">状态栏信息</label>
+					<input type="text">
+				</div>
+				<div class="btm-tex">
+					<label for="">图片下方显示文字</label>
+					<input type="text">
+				</div>
 			</div>
-			<div class="name">
-				<label for="">广告名称</label>
-				<input type="text">
-			</div>
-			<div class="website">
-				<label for="">目标网址</label>
-				<input type="text" placeholder="http://">
-			</div>
-			<div class="format">
-				<label for="">广告格式</label>
-				<span class="file-container">
-					<input type="file">
-					<span class="file-btn">选择图片</span>
-				</span>
-				<span  class="file-type">支持的尺寸和格式</span>
-			</div>
-			<div class="instead-text">
-				<label for="">
-					图片无法显示时的替换文字
-					
-				</label>
-				<input type="text">
-			</div>
-			<div class="info">
-				<label for="">状态栏信息</label>
-				<input type="text">
-			</div>
-			<div class="btm-tex">
-				<label for="">图片下方显示文字</label>
-				<input type="text">
+			<div class="add-banner">
+				<span @click="addMoreBanner">新增一条</span>
 			</div>
 			<div class="opeate">
 				<span class="cancel" @click="cancelAddBanner">取消</span>
 				<span class="submit" @click="saveAddBanner">提交</span>
 			</div>
 		</div>
-		
 	</div>
 </template>
 <script>
@@ -230,6 +233,17 @@ export default{
 						}
 					]
 				},
+				bannerLists:[
+					{
+						campaign:'',
+						name:'',
+						imgurl:'',
+						alt:'',
+						status:'',
+						belowText:''
+					}
+
+				],
 				campaigns:{
 					optionHeight:'30px',
 					options:[
@@ -238,7 +252,8 @@ export default{
 							id:0
 						}
 					]
-				}
+				},
+
 			}
 		},
         computed:{
@@ -275,8 +290,19 @@ export default{
         		}
         		 
         	},
-        	addNewCampaign(){
+        	addNewBanner(){
         		this.showList = false
+        	},
+        	addMoreBanner(){
+        		console.log(this.bannerLists)
+        		this.bannerLists.push({
+        			campaign:'',
+					name:'',
+					imgurl:'',
+					alt:'',
+					status:'',
+					belowText:''
+        		})
         	},
         	cancelAddBanner(){
         		this.showList = true
@@ -392,9 +418,7 @@ export default{
 		}
 	}
 	.add{
-		&>div{
-			margin-bottom: 20px;
-		}
+		
 		input[type='text']{
 			width: 320px;
 		}
@@ -416,61 +440,87 @@ export default{
 				margin-right: 10px;
 			}
 		}
-		.name{
-			input{
-				width: 220px;
+		.banner-item{
+			margin: 30px 0 50px;
+			padding-bottom: 50px;
+			border-bottom: 1px solid #D9D9D9;
+			&>div{
+				margin-bottom: 20px;
 			}
-		}
-		.website{
-
-		}
-		.format{
-			.file-container{
-				position: relative;
-				display: inline-block;
-				width: 160px;
-				height: 140px;
-				border: 1px solid #D9D9D9;
-				line-height: 120px;
-				vertical-align: top;
-				text-align: center;
-				cursor: pointer;
+			.name{
 				input{
-					opacity: 0;
-					position: absolute;
-					left:0;
-					top: 0;
+					width: 220px;
+				}
+			}
+			.website{
+
+			}
+			.format{
+				.file-container{
+					position: relative;
+					display: inline-block;
 					width: 160px;
 					height: 140px;
+					border: 1px solid #D9D9D9;
+					line-height: 120px;
+					vertical-align: top;
+					text-align: center;
 					cursor: pointer;
+					input{
+						opacity: 0;
+						position: absolute;
+						left:0;
+						top: 0;
+						width: 160px;
+						height: 140px;
+						cursor: pointer;
+					}
+					.file-btn{
+						cursor: pointer;
+						display: inline-block;
+						line-height: 30px;
+						width: 84px;
+						background: #568CDC;
+						border-radius: 4px;
+						color: #fff;
+						font-size: 14px;
+					}
 				}
-				.file-btn{
+				.file-type{
+					font-size: 10px;
+					color: #335FA0;
+					margin-left: 10px;
+					text-decoration: underline;
 					cursor: pointer;
-					display: inline-block;
-					line-height: 30px;
-					width: 84px;
-					background: #568CDC;
-					border-radius: 4px;
-					color: #fff;
-					font-size: 14px;
 				}
 			}
-			.file-type{
-				font-size: 10px;
-				color: #335FA0;
-				margin-left: 10px;
-				text-decoration: underline;
+			.instead-text{
+
+			}
+			.info{
+
+			}
+			.btm-tex{
+
+			}
+		}
+		
+		$marginLeft: 202px;
+		.add-banner{
+
+			span{
+				margin-left:$marginLeft;
+				height: 30px;
+				line-height: 30px;
+				display: inline-block;
+				text-align: center;
+				border-radius: 4px;
+				font-size: 14px;
+				width: 84px;
 				cursor: pointer;
+				color: #fff;
+				background-color:  #568CDC;
 			}
-		}
-		.instead-text{
-
-		}
-		.info{
-
-		}
-		.btm-tex{
-
 		}
 		.opeate{
 			margin-top: 40px;
@@ -486,7 +536,7 @@ export default{
 			.cancel{
 				border: 1px solid #335FA0;
 				margin-right: 40px;
-				margin-left:242px;
+				margin-left:$marginLeft;
 			}
 			.submit{
 				background: #335FA0;

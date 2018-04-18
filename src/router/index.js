@@ -29,7 +29,7 @@ Vue.directive('focus', {
 
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   routes: [
   	{
   		path:'/',

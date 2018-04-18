@@ -32,7 +32,7 @@
 			</div>
 			<my-table @on-td-click="tdClick" :tableData="tableData"></my-table>
 		</div>
-		<div class="add" v-show="!showList">
+		<div class="add" v-if="!showList">
 			<div class="tit">
 				Add new campagin
 			</div>
