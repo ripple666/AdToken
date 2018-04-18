@@ -27,10 +27,6 @@
 				<my-table  @on-td-click="tdClick" :tableData="tableData"></my-table>
 			</div>
 		</div>
-		<span>123</span>
-	
-		
-	
 	</div>
 </template>
 <script>

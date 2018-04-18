@@ -33,7 +33,6 @@
 					<span @click="changetype(index)" :style="nowtips[0]===index||nowtips[1]===index?{backgroundColor:'#568CDC',color:'#fff'}:''" class="tip" v-for="(item,index) in tips">{{item.name}}</span>
 				</div>
 				<div class="content" id="chart-container">
-					
 				</div>
 			</div>
 		</div>
@@ -47,6 +46,8 @@ import Highcharts from 'highcharts/highstock';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsDrilldown from 'highcharts/modules/drilldown';
 import Highcharts3D from 'highcharts/highcharts-3d';
+
+
 HighchartsMore(Highcharts)
 HighchartsDrilldown(Highcharts);
 Highcharts3D(Highcharts);
@@ -311,7 +312,7 @@ export default{
 		background-color: #fff;
 		border: 1px solid #EEEEEE;
 		padding-left: 30px;
-		padding-bottom: 80px;
+		padding-bottom: 30px;
 		padding-right: 30px;
 		.tit{
 			font-size: 18px;
@@ -347,7 +348,7 @@ export default{
 			}
 			.content{
 				margin-right: 30px;
-				min-height: 402px;
+				height: 44vh;
 			}
 		}
 	}

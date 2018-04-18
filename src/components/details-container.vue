@@ -42,7 +42,6 @@ import { mapState } from 'vuex'
 								pagename:'广告列表',
 								path:'/advertise-banner'
 							}
-							
 						]
 					},
 					{
@@ -80,7 +79,7 @@ import { mapState } from 'vuex'
         },
         methods:{
         	changeFirstShow(firstIndex){
-        		this.$router.push({path:this.firstLists[firstIndex].path});
+        		this.$router.push({path:this.firstLists[firstIndex].path})
         		this.nowFirstIndex = firstIndex
         		this.nowSconIndex = 0
         		this.storageIndex(firstIndex,0)
@@ -88,7 +87,7 @@ import { mapState } from 'vuex'
         	changeScondShow(firstIndex,sconIndex){
         		this.nowFirstIndex = firstIndex
         		this.nowSconIndex = sconIndex
-        		this.$router.push({path:this.firstLists[firstIndex].sconLists[sconIndex].path});
+        		this.$router.push({path:this.firstLists[firstIndex].sconLists[sconIndex].path})
         		this.storageIndex(firstIndex,sconIndex)
         	},
         	storageIndex(firstIndex,sconIndex){ //储存当前页面的位置
