@@ -37,7 +37,7 @@ export default new Router({
   		redirect: '/',
   		children:[
 			  {
-		      path: '/main',
+		      path: '/',
 		      component: main,
 		    },
         {
@@ -53,32 +53,32 @@ export default new Router({
           component:passwordRecovery,
         },
         {
-          path: '/',
+          path: '/details',
           component:detailsContainer,
           redirect: '/index',
           children:[
             {
-              path: 'index',
+              path: '/index',
               component: index,
             },
             {
-              path: 'advertise-campaign',
+              path: '/advertise-campaign',
               component: advertiseCampaign,
             },
             {
-              path: 'advertise-banner',
+              path: '/advertise-banner',
               component: advertiseBanner,
             },
             {
-              path: 'datacount',
+              path: '/datacount',
               component: datacount,
             },
             {
-              path: 'pay',
+              path: '/pay',
               component: pay,
             },
             {
-              path: 'account',
+              path: '/account',
               component: account,
             }
           ]

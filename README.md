@@ -26,7 +26,9 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ------------
 ```
  检测用户是否登录的组件在app.vue里面
- 输入域名跳转的页面是index.vue
+ 输入域名跳转的页面是main.vue
+ 所有components只会触发一次
+ 已经登录的用户可以看到details里面的内容
 ```
 
 

@@ -5,8 +5,11 @@
             	<router-link :to="{path:'/'}" >
                 	<img :src="logo"  height="57" width="110" alt="">
                 </router-link>
-                <span>
-                    <router-link :to="{path:'login'}" class="sign-in">Sign into AdToken</router-link>
+                <span v-show="!isLogin" class="sign-in">
+                    <router-link :to="{path:'/login'}" >Sign into AdToken</router-link>
+                </span>
+                <span v-show="isLogin" class="sign-in">
+                    <span>{{userInfo.name}}</span>
                 </span>
             </div>
         </div>
@@ -14,13 +17,21 @@
 	</div>
 </template>
 <script>
+import {mapState} from 'vuex'
 	export default{
 		data(){
 			return{
-            	logo:require('../assets/images/AdToken.png')
+            	logo:require('../assets/images/AdToken.png'),
+                userInfo:{
+                    name:'jduncan@youopia.name'
+                }
 			}
 		},
+        computed:mapState({
+            isLogin:'isLogin'
+        }),
 		created(){
+
 		}
 	}
 </script>
@@ -55,5 +66,6 @@
         font-size: 13px;
         color: #335FA0;
         cursor: pointer;
+        margin-right: 80px;
     }
 </style>

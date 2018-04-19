@@ -1,7 +1,7 @@
 <template>
 	<div class="main">
-        <div id="body" class="body">
-            <div >
+        <div id="container" class="container">
+            <div>
                 <div class="sign-btn">
                      <router-link :to="{path:'login'}" class="sign-up">Sign into AdToken</router-link>
                 </div>
@@ -38,12 +38,13 @@ export	default{
 </script>
 <style  lang="scss" scope>
 .main{
-    .body{
+    .container{
         height: 100vh;
         width: 100vw;
         position: absolute;
         top: 0;
         left:0;
+        z-index: -1;
         padding-top: 9.4vh;
     }
     a{
@@ -55,7 +56,7 @@ export	default{
     img{
         vertical-align: middle;
     }
-    .body{
+    .container{
         text-align: center;
     }
     .sign-btn{
@@ -64,7 +65,7 @@ export	default{
         transform: translateX(-50%);
         z-index: 100;
     }
-    .body .sign-up {
+    .container .sign-up {
         background: #4167B2;
         border-radius: 4px;
         display: inline-block;
@@ -74,7 +75,7 @@ export	default{
         cursor: pointer;
         margin-top: 7vh;
     }
-    .body .firstpage-bg{
+    .container .firstpage-bg{
         height:59vh;
     }
     .pic-container{

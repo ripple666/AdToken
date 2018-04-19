@@ -36,15 +36,14 @@
 				password:''
 			}
 		},
-		computed:{
-        },
         watch:{
 
         },
 		methods:{
 			login(){
 				localStorage.setItem('login',true)
-				this.$router.push({path:'/'});
+				this.$router.push({path:'/details'});
+				this.$store.commit('login',true)
 			}
 			// ...mapMutations([
 		 //      'increment', // 将 `this.increment()` 映射为 `this.$store.commit('increment')`

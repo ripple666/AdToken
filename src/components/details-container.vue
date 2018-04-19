@@ -68,24 +68,27 @@
 
         },
         methods:{
-        	changeFirstShow(firstIndex){
+        	changeFirstShow(firstIndex){ //点击导航栏一级导航触发事件
         		this.$router.push({path:this.firstLists[firstIndex].path})
         		this.nowFirstIndex = firstIndex
         		this.nowSconIndex = 0
         		this.storageIndex(firstIndex,0)
         	},
-        	changeScondShow(firstIndex,sconIndex){
+        	changeScondShow(firstIndex,sconIndex){//点击导航栏二级导航触发事件
         		this.nowFirstIndex = firstIndex
         		this.nowSconIndex = sconIndex
         		this.$router.push({path:this.firstLists[firstIndex].sconLists[sconIndex].path})
         		this.storageIndex(firstIndex,sconIndex)
         	},
-        	storageIndex(firstIndex,sconIndex){ //储存当前页面的位置
+        	storageIndex(firstIndex,sconIndex){ //每次点击导航栏储存当前页面的位置
         		sessionStorage.setItem('nowFirstIndex',firstIndex)
         		sessionStorage.setItem('nowSconIndex',sconIndex)
         	}
         },
 		created(){
+			console.log('details-container.vue is loaded')
+
+			//用来刷新页面，保留之前的导航栏的样式
 		    const path = this.$route.path
 		    switch(path){
 		    	case '/index':
