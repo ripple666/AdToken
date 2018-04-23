@@ -14,7 +14,7 @@ import advertiseBanner from '@/pages/details/advertise-banner'
 import pay from '@/pages/details/pay'
 import datacount from '@/pages/details/datacount'
 import account from '@/pages/details/account'
-
+import NotFoundComponent from '@/components/not-found'
 
 
 Vue.use(Router)
@@ -82,9 +82,8 @@ export default  new Router({
           ]
         }
       ]
-    }
-    // ,
-    // { path: '*', component: NotFoundComponent }
+    },
+    { path: '*', component: NotFoundComponent }
   ],
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
