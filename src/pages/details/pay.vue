@@ -120,6 +120,7 @@ import myTable from '@/components/pices/my-table'
         	}
         },
 		created(){
+			console.log('pay is loaded')
 		}
 	}
 </script>

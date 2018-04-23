@@ -205,6 +205,7 @@ import mySelect from '@/components/pices/my-select'
         	}
         },
 		created(){
+			console.log('datacount is loaded')
 		}
 	}
 </script>

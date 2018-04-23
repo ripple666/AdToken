@@ -16,18 +16,19 @@ export default {
   },
   created(){
      //检测用户是否登录，在app.vue里面，所以每次用户打开页面都会调用
-     console.log('app.vue is loaded')
+      console.log('app.vue is loaded')
       let islogin = localStorage.getItem('login')
+      let newOpenWebsites = sessionStorage.getItem('newOpenWebsites') 
       if(islogin){ 
         this.$store.commit('login',true)
-        if(sessionStorage.getItem('nowFirstIndex')){//如果只是刷新页面就不跳转到首页，如果是新打开浏览器
-            return
+        if(!newOpenWebsites){//如果只是刷新页面就不跳转到首页，如果是新打开浏览器就跳转到index
+             this.$router.push('/details')
         }
-        this.$router.push({path:'/details'})
       }else{
          this.$router.push({path:'/'})//如果登录信息失效，就跳到入口页面
          this.$store.commit('login',false)
       }
+      sessionStorage.setItem('newOpenWebsites',true)
   }
 }
 </script>

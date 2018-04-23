@@ -410,6 +410,7 @@ export default{
         	}
         },
 		created(){
+			console.log('advertise-campaign is loaded')
 		}
 }
 </script>
@@ -422,7 +423,7 @@ export default{
 	&>div>.tit{
 		line-height: 55px;
 		font-size: 18px;
-		border-bottom:1px solid  #D9D9D9 ;
+		border-bottom:1px solid  #D9D9D9;
 	}
 	.list{
 		.operate{

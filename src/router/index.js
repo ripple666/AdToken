@@ -26,20 +26,18 @@ Vue.directive('focus', {
     el.focus()
   }
 })
-
-
-export default new Router({
-  mode: 'hash',
+export default  new Router({
+  mode: 'history',
   routes: [
-  	{
-  		path:'/',
-  		component:bodyContainer,
-  		redirect: '/',
-  		children:[
-			  {
-		      path: '/',
-		      component: main,
-		    },
+    {
+      path:'/',
+      component:bodyContainer,
+      redirect: '/',
+      children:[
+        {
+          path: '/',
+          component: main,
+        },
         {
           path: '/login',
           component:login,
@@ -83,9 +81,18 @@ export default new Router({
             }
           ]
         }
-  		]
-  	}
-  ]
+      ]
+    }
+    // ,
+    // { path: '*', component: NotFoundComponent }
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 

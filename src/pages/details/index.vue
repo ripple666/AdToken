@@ -256,7 +256,7 @@ export default{
 		    }
         },
 		created(){
-
+			console.log('index is loaded')
 		},
 		mounted(){
 			this.initChart()

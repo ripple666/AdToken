@@ -16,7 +16,11 @@ export default new Vuex.Store({
 			months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'), 
 			weeks: '一_二_三_四_五_六_日'.split('_')
 		},
-		isLogin:false
+		isLogin:false,
+		detailIndex:{//详情页当前的位置
+			nowFirstIndex:0,
+			nowSconIndex:0
+		}
 	},
 	getters: {  //和compute类似
 	    doneTodos: (state, getters) => {
@@ -30,6 +34,9 @@ export default new Vuex.Store({
 	    },
 	    login : (state,isLogin) => {
 	        state.isLogin = isLogin
+	    },
+	    setDetailIndex(state,detailIndex){
+	    	 state.detailIndex = detailIndex
 	    }
 	},
 	actions: { //store.dispatch({ type: 'incrementAsync', amount: 10 })

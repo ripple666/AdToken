@@ -31,7 +31,6 @@ import {mapState} from 'vuex'
             isLogin:'isLogin'
         }),
 		created(){
-
 		}
 	}
 </script>

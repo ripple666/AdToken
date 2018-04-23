@@ -312,6 +312,7 @@ export default{
         	}
         },
 		created(){
+			console.log('advertise-banner is loaded')
 		}
 }
 </script>

@@ -44,6 +44,7 @@
 
         },
 		created(){
+			console.log('account is loaded')
 		}
 	}
 </script>
