@@ -11,7 +11,7 @@ Vue.prototype.$http = axios  //全局使用axios
 
 router.afterEach((to, from) => { //监听页面路由发生变化
     let path = to.path
-
+    console.log(path)
     let detailIndex ={
       nowFirstIndex : 0,
       nowSconIndex : 0

@@ -4,29 +4,49 @@
   </div>
 </template>
 <script>
-
+import {validate} from '@/assets/js/validate'
 export default {
   components:{},
   data(){
-    return{
-    }
+      return{
+      }
   },
   methods:{
-
+      
   },
   created(){
-     //检测用户是否登录，在app.vue里面，所以每次用户打开页面都会调用
+      let neetLoginPage = ['/index','/advertise-campaign','/advertise-banner', '/datacount', '/pay', '/account']  //需要登录的页面
+
+
+      window.baseUrl = 'http://test.pptx.info'
+
+
+
+
+      //检测用户是否登录，在app.vue里面，所以每次用户打开页面都会调用
       console.log('app.vue is loaded')
+
+
       let islogin = localStorage.getItem('login')
-      let newOpenWebsites = sessionStorage.getItem('newOpenWebsites') 
+      let newOpenWebsites = sessionStorage.getItem('newOpenWebsites')
+
+
       if(islogin){ 
+
         this.$store.commit('login',true)
+
         if(!newOpenWebsites){//如果只是刷新页面就不跳转到首页，如果是新打开浏览器就跳转到index
              this.$router.push('/details')
         }
+        
       }else{
-         this.$router.push({path:'/'})//如果登录信息失效，就跳到入口页面
-         this.$store.commit('login',false)
+
+        this.$store.commit('login',false)
+         
+        if(validate.inArray(neetLoginPage,this.$route.path)){//如果需要登录的页面登录信息失效，就跳到入口页面
+            this.$router.push({ path : '/' })
+        }
+       
       }
       sessionStorage.setItem('newOpenWebsites',true)
   }

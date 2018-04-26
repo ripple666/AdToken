@@ -1,5 +1,5 @@
 
-import $ from 'jquery'
+// import $ from 'jquery'
 
 var validate = function(){
 
@@ -41,30 +41,11 @@ var obj = {
 			}
 		}
 	},
-	index_cn_init:function(obj){
-		window.onresize = ()=> {
-			let width = $(window).width()
-			let left = (width-362)/2+'px'
-			obj.campaignPosition = left
-			if(width<720){
-				obj.isMobile = true
-				console.log(obj)
-				
-			}else{
-				obj.isMobile = false
-			}
-		}
-		obj.isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) || $(window).width()<720 //是否是移动端
-		obj.campaignPosition = ($(window).width()-362)/2+'px' //campaign居中
-		$(window).on('scroll',function(){
-			let scrollHeight = $(window).scrollTop()
-			if(scrollHeight<500){
-				$('html,body').css('background-color','#fff')
-			}else{
-				$('html,body').css('background-color','#000')
-			}
-		})
-	}
+	inArray (arr,value){
+        var str = arr.join(',')
+        var reg = new RegExp(value,'ig')
+        return (reg.test(str));
+    }
 }
 for(var key in obj){
 	validate.prototype[key] = obj[key]
